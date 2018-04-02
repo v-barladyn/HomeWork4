@@ -7,7 +7,6 @@ import PostCount from './components/PostCount.js';
 import Search from './components/Search.js';
 
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +14,7 @@ class App extends React.Component {
         this.state = {
             limit: 10,
             show: true ,
-            search : "",
+            search: "",
             articles: articles,
 
         };
@@ -30,20 +29,22 @@ class App extends React.Component {
             [name]: value,
             articles: articles.filter(e => {
                 return e.title.indexOf(value) >= 0;
-            }).slice(0, 10),
+            }),
 
-              limit : articles.filter(e => {
-                  return e.title.indexOf(value) >= 0;
-             }).length
+            limit : articles.filter(e => {
+               return e.title.indexOf(value) >= 0;
+           }).length,
+
+             show : false,
         });
 
     }
 
     showMore() {
-        this.setState({
-            show: this.state.limit >= 90 ? false : true,
-            limit: this.state.limit + 10,
-        });
+        this.setState((prevState, props) =>({
+            show: prevState.limit >= 90 ? false : true,
+            limit: prevState.limit + 10,
+        }));
 
     }
 

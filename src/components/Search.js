@@ -23,7 +23,7 @@ class Search extends React.Component {
                             name="search"
                             value={this.props.search}
                             onChange={this.props.change}
-                            placeholder="" />
+                            placeholder="search" />
                  </div>
             </form>
         );
